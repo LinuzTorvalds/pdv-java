@@ -601,11 +601,15 @@ public class ViewPDV extends javax.swing.JFrame {
                 Several.showData("Digite um caractere numérico", title, false);
             else {
                 int row = Integer.parseInt(removeItem);
-                table.removeRow(row);
-                subTotal();
-                int rowsAmount = table.getRowCount();
-                for (int i = 0; i < rowsAmount; i++)
-                    table.setValueAt(i, i, 0);
+                if (row > table.getRowCount()) 
+                    Several.showData("Nº de item fora da lista", title, false);
+                else {
+                    table.removeRow(row);
+                    subTotal();
+                    int rowsAmount = table.getRowCount();
+                    for (int i = 0; i < rowsAmount; i++)
+                        table.setValueAt(i, i, 0);
+                }
             }
         }
     }
