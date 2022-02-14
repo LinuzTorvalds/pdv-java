@@ -51,7 +51,7 @@ public class DaoProduct implements DaoBasic {
     public boolean update(Object o) {
         boolean result = true;
         Product p = (Product) o;
-        String inst = "update Product set description = ?, value = ?, where code = ?;";
+        String inst = "update Product set description = ?, value = ? where code = ?;";
         try {
             Connection con = DaoConnection.getInstance().getCon();
             try (PreparedStatement pS = con.prepareStatement(inst)) {
